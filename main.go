@@ -30,7 +30,7 @@
 //      $
 //
 // Known issues:
-//      missing GET method endpoints (cat, ls, etc...)
+//      missing GET method endpoints (cat, ls)
 //      missing DELETE method endpoints (rm)
 //      can't do multiple files into a single paste
 //
