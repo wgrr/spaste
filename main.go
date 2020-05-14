@@ -13,6 +13,27 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+// spaste sourcehut paste service client.
+//
+// Usage:
+//
+//	spase (-e | -t) [ file... ]
+//
+// Example
+//
+//	$ spaste -e $(gpg password_file) file
+//      https://paste.sr.ht/blob/9801739daae44ec5293d4e1f53d3f4d2d426d91c
+//      $
+//
+//	$ curl -L example.com | spaste -t 42424242
+//      https://paste.sr.ht/blob/9801739daae44ec5293d4e1f53d3f4d2d426d91c
+//      $
+//
+// Known issues:
+//      missing GET method endpoints (cat, ls, etc...)
+//      missing DELETE method endpoints (rm)
+//      can't do multiple files into a single paste
+//
 package main
 
 import (
@@ -46,7 +67,7 @@ func main() {
 	log.SetFlags(0)
 	flag.Parse()
 	flag.Usage = func() {
-		log.Print("(-e cmd | -t token) [ files... ]")
+		fmt.Fprint(os.Stderr, "spaste (-e cmd | -t token) [ files... ]")
 		flag.PrintDefaults()
 	}
 
